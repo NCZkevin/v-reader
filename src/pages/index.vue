@@ -1,11 +1,13 @@
 <template>
   <div>
     <v-header></v-header>
+    <v-search></v-search>
   </div>
 </template>
 
 <script>
   import header from '../components/header.vue'
+  import search from '../components/search.vue'
 
   export default {
     data () {
@@ -15,7 +17,8 @@
     mounted () {},
     methods: {},
     components: {
-      'v-header': header
+      'v-header': header,
+      'v-search': search
     }
   }
 </script>
