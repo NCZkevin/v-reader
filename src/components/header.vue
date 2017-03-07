@@ -3,7 +3,7 @@
         <div class="Swipe-tab Swipe-tab_2 f-cb">
             <!-- <router-link :to='"/"'>书城</router-link>
             <router-link :to='"/"'>书架</router-link> -->
-            <a href="javascript:"></a>
+            <a href="javascript:" class="Swipe-tab__on"></a>
             <a href="javascript:"></a>
             <i style="width:277px;transition-duration:0s;transform:translate3d(0px,0px,0px)"></i>
         </div>
