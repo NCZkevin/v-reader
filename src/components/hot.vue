@@ -6,37 +6,19 @@
       </p>
     </div>
     <ul class="list-h5">
-      <li>
+      <li v-for="item in hot">
         <div class="book-h5">
           <div class="book-h5_cover">
-            <img src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01ZdHy8cV5v/Mtd42KtIaBcHd6.jpg!s" alt="">
+            <img :src="item.cover" alt="item.title">
             <p class="book-h5_finish">完结</p>
           </div>
           <div class="book-h5_info">
-            <p class="book-h5_title">书名</p>
-            <p class="book-h5_author">作者</p>
-            <p class="book-h5_summary">简介</p>
+            <p class="book-h5_title">{{item.title}}</p>
+            <p class="book-h5_author">{{item.authors}}</p>
+            <p class="book-h5_summary">{{item.summary}}</p>
             <div class="book-h5_wrap">
-              <div class="book-h5_tag">
-                标签
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="book-h5">
-          <div class="book-h5_cover">
-            <img src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01ZdHy8cV5v/Mtd42KtIaBcHd6.jpg!s" alt="">
-            <p class="book-h5_finish">完结</p>
-          </div>
-          <div class="book-h5_info">
-            <p class="book-h5_title">书名</p>
-            <p class="book-h5_author">作者</p>
-            <p class="book-h5_summary">简介</p>
-            <div class="book-h5_wrap">
-              <div class="book-h5_tag">
-                标签
+              <div class="book-h5_tag" v-for="(tag,index) in item.tags" v-if="index < 3">
+                {{tag}}
               </div>
             </div>
           </div>
@@ -49,7 +31,15 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      hot: []
+    }
+  },
+  created () {
+    this.axios.get('/index')
+      .then((response) => {
+        this.hot = response.data.items[1].data.data
+      })
   },
   computed: {},
   mounted () {},

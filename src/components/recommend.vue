@@ -10,30 +10,30 @@
       </div>
     </div>
     <ul class="list-h5">
-      <li>
+      <li v-for="(item,index) in recommend" v-if="index==0">
         <div class="book-h5">
           <div class="book-h5_cover">
-            <img src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01ZdHy8cV5v/Mtd42KtIaBcHd6.jpg!s" alt="">
+            <img :alt="item.title" :src="item.cover" >
             <p class="book-h5_finish">完结</p>
           </div>
           <div class="book-h5_info">
-            <p class="book-h5_title">书名</p>
-            <p class="book-h5_author">作者</p>
-            <p class="book-h5_summary">简介</p>
+            <p class="book-h5_title">{{item.title}}</p>
+            <p class="book-h5_author">{{item.authors}}</p>
+            <p class="book-h5_summary">{{item.summary}}</p>
             <div class="book-h5_wrap">
-              <div class="book-h5_tag">
-                标签
+              <div class="book-h5_tag" v-for="(tag,index1) in item.tags" v-if="index1 < 3">
+                {{tag}}
               </div>
             </div>
           </div>
         </div>
       </li>
-      <li>
+      <li v-for="(item,index) in recommend" v-if="index>0 && index<9">
         <div class="book-h5 book-h5_no-img">
-          <span class="book-h5_no-img_order">01</span>
+          <span class="book-h5_no-img_order">0{{index}}</span>
           <div class="book-h5_no-img_info">
             <p class="book-h5_no-img_title">
-              书籍名称
+              {{item.title}}
             </p>
           </div>
         </div>
@@ -45,7 +45,15 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      recommend: []
+    }
+  },
+  created () {
+    this.axios.get('/index')
+      .then((response) => {
+        this.recommend = response.data.items[2].data.data
+      })
   },
   computed: {},
   mounted () {},

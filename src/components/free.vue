@@ -4,14 +4,14 @@
   		<h2 class="channel-group__title channel-group__title_left">限时免费</h2>
   	</div>
   	<ul class="book-table">
-  		<li>
+  		<li v-for="item in bookList">
   				<div class="u-book">
   					<div class="book-cover">
-  						<img alt="" src="http://cover.read.duokan.com/mfsv2/download/fdsc3/p01ZdHy8cV5v/Mtd42KtIaBcHd6.jpg!s">
+  						<img alt="item.title" :src="item.data.cover">
   						<div class="u-tagRT -freefiction"></div>
   					</div>
   					<div class="info">
-  						<h3 class="title">透视神医</h3>
+  						<h3 class="title">{{item.data.title}}</h3>
   					</div>
   				</div>
   		</li>
@@ -22,13 +22,10 @@
 
 <script>
 export default {
+  props: ['bookList'],
   data () {
     return {}
-  },
-  computed: {},
-  mounted () {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 

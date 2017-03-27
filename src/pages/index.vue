@@ -33,8 +33,9 @@
         </ul>
         <v-hot></v-hot>
         <v-recommend></v-recommend>
-        <v-category></v-category>
-        <v-free></v-free>
+        <v-category liTitle="男生" :list="maleBook"></v-category>
+        <v-category liTitle="女生" :list="femaleBook"></v-category>
+        <v-free :bookList="freeBook"></v-free>
       </div>
     </div>
   </div>
@@ -51,11 +52,12 @@
 
   export default {
     data () {
-      return {}
+      return {
+        freeBook: [],
+        maleBook: [],
+        femaleBook: []
+      }
     },
-    computed: {},
-    mounted () {},
-    methods: {},
     components: {
       'v-header': header,
       'v-search': search,
@@ -64,7 +66,18 @@
       'v-hot': hot,
       'v-category': category,
       'v-free': free
-    }
+    },
+    created () {
+      this.axios.get('/index')
+        .then((response) => {
+          this.maleBook = response.data.items[4].data.data
+          this.femaleBook = response.data.items[3].data.data
+          this.freeBook = response.data.items[5].data.data
+        })
+    },
+    computed: {},
+    mounted () {},
+    methods: {}
   }
 </script>
 
