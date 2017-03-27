@@ -8,22 +8,24 @@
     <div>
       <ul class="list-h5">
         <li v-for="item in list">
-          <div class="book-h5">
-            <div class="book-h5_cover">
-              <img :src="item.cover" alt="item.title">
-              <p class="book-h5_finish">完结</p>
-            </div>
-            <div class="book-h5_info">
-              <p class="book-h5_title">{{item.title}}</p>
-              <p class="book-h5_author">{{item.authors}}</p>
-              <p class="book-h5_summary">{{item.summary}}</p>
-              <div class="book-h5_wrap">
-                <div class="book-h5_tag" v-for="(tag,index) in item.tags" v-if="index < 3">
-                  {{tag}}
+        	<router-link :to='"/detail/"+item.url'>
+            <div class="book-h5">
+              <div class="book-h5_cover">
+                <img :src="item.cover" alt="item.title">
+                <p class="book-h5_finish">完结</p>
+              </div>
+              <div class="book-h5_info">
+                <p class="book-h5_title">{{item.title}}</p>
+                <p class="book-h5_author">{{item.authors}}</p>
+                <p class="book-h5_summary">{{item.summary}}</p>
+                <div class="book-h5_wrap">
+                  <div class="book-h5_tag" v-for="(tag,index) in item.tags" v-if="index < 3">
+                    {{tag}}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+        	</router-link>
         </li>
       </ul>
     </div>

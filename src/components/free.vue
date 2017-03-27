@@ -5,6 +5,7 @@
   	</div>
   	<ul class="book-table">
   		<li v-for="item in bookList">
+			  <router-link :to='"/detail/"+item.url'>
   				<div class="u-book">
   					<div class="book-cover">
   						<img alt="item.title" :src="item.data.cover">
@@ -14,6 +15,7 @@
   						<h3 class="title">{{item.data.title}}</h3>
   					</div>
   				</div>
+	      </router-link>
   		</li>
   	</ul>
   	<a class="channel-group__footer">更多限免佳作&gt;&gt;</a>

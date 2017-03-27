@@ -64,7 +64,7 @@
     }
     .Swipe-tab i {
         position: absolute;
-        left: 0;
+        /*left: 0;*/
         -webkit-transition:-webkit-transform .3s ease-out;
     }
     .Swipe-tab a {

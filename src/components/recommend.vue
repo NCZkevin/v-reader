@@ -11,6 +11,7 @@
     </div>
     <ul class="list-h5">
       <li v-for="(item,index) in recommend" v-if="index==0">
+      	<router-link :to='"/detail/"+item.url'>
         <div class="book-h5">
           <div class="book-h5_cover">
             <img :alt="item.title" :src="item.cover" >
@@ -27,8 +28,10 @@
             </div>
           </div>
         </div>
+        </router-link>
       </li>
       <li v-for="(item,index) in recommend" v-if="index>0 && index<9">
+      	<router-link :to='"/detail/"+item.url'>
         <div class="book-h5 book-h5_no-img">
           <span class="book-h5_no-img_order">0{{index}}</span>
           <div class="book-h5_no-img_info">
@@ -37,6 +40,7 @@
             </p>
           </div>
         </div>
+      	</router-link>
       </li>
     </ul>
   </div>

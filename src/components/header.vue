@@ -5,7 +5,7 @@
             <router-link :to='"/"'>书架</router-link> -->
             <a href="javascript:" class="Swipe-tab__on"></a>
             <a href="javascript:"></a>
-            <i style="width:277px;transition-duration:0s;transform:translate3d(0px,0px,0px)"></i>
+            <i ref="btborder" style="transition-duration:0s;transform:translate3d(0px,0px,0px)"></i>
         </div>
         <em class="header-user"></em>
         <em class="header-checkin"></em>
@@ -13,7 +13,12 @@
 </template>
 
 <script>
-
+  export default {
+    mounted () {
+      let w = document.getElementsByClassName('Swipe-tab__on').clientWidth
+      this.$refs.btborder.style.width = w + 'px'
+    }
+  }
 </script>
 
 <style>
@@ -70,7 +75,7 @@
     }
     .Swipe-tab i {
       position: absolute;
-      left: 0;
+      left: 18%;
       -webkit-transition: -webkit-transform .3s ease-out;
     }
     .Swipe-tab a {
